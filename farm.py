@@ -19,15 +19,18 @@ imagey = Image.new("1", size = (epd.width, epd.height), color = 255)
 font_body = ImageFont.truetype("OpenSans-Regular.ttf", 26)
 font_heading = ImageFont.truetype("OpenSans-Regular.ttf", 56)
 font_big = ImageFont.truetype("OpenSans-Regular.ttf", 128)
+font_cal = ImageFont.truetype("DroidSansMono.ttf", 26)
 
 cal = TextCalendar().formatmonth(today.year, today.month)
 
 draw = ImageDraw.Draw(image)
-draw.text((30,10), today.strftime("%b"), font = font_heading)
-draw.text((10,70), today.strftime("%d"), font = font_big)
-draw.text((30,220), today.strftime("%Y"), font = font_heading)
-draw.text((200, 30), cal, font = font_body)
-#image.save("test.jpg")
+drawy = ImageDraw.Draw(imagey)
+
+draw.text((50,10), today.strftime("%b"), font = font_heading)
+draw.text((30,70), today.strftime("%d"), font = font_big)
+draw.text((50,220), today.strftime("%Y"), font = font_heading)
+drawy.text((210, 30), cal, font = font_cal)
+draw.text((210,220), today.strftime("%A"), font = font_heading)
 
 epd.init()
 epd.Clear()
