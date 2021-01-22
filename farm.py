@@ -36,7 +36,7 @@ draw.text((30, 70), today.strftime("%d"), font = font_big)
 draw.text((50, 220), today.strftime("%Y"), font = font_heading)
 drawy.text((210, 30), cal, font = font_cal)
 draw.text((210, 220), today.strftime("%A"), font = font_heading)
-drawy.text((30, 300), "\n".join(textwrap.wrap(quote)), font = font_quote)
+drawy.text((40, 300), "\n".join(textwrap.wrap(quote)), font = font_quote)
 
 #image.save("test.jpg")
 epd.init()
