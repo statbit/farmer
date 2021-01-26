@@ -3,6 +3,7 @@
 import sys
 import requests
 import textwrap
+from farm_settings import Settings
 
 sys.path.append("lib")
 
@@ -21,7 +22,7 @@ font_cal = ImageFont.truetype("DroidSansMono.ttf", 26)
 epd = epd7in5bc.EPD()
 
 def getWeather():
-    qurl = "https://api.openweathermap.org/data/2.5/onecall?exclude=minutely,hourly&lat={}&lon={}&appid={}&unit=imperial".format(lat, lon, api_key)
+    qurl = "https://api.openweathermap.org/data/2.5/onecall?exclude=minutely,hourly&lat={}&lon={}&appid={}&unit=imperial".format(Settings.lat, Settings.lon, Settings.api_key)
     resp = requests.get(url=qurl)
     data = resp.json()
     return data
