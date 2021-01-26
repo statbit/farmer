@@ -40,10 +40,10 @@ def verticalImages():
     draw = ImageDraw.Draw(image)
     drawy = ImageDraw.Draw(imagey)
 
-    draw.text((50, 10), today.strftime("%b %d %Y"), font = font_heading)
-    drawy.text((50, 80), today.strftime("%A"), font = font_heading)
-    draw.text((40, 160), cal, font = font_cal)
-    drawy.text((50, 400), "\n".join(textwrap.wrap(getQuote(), width=30)), font = font_quote)
+    draw.text((50, 30), today.strftime("%b %d %Y"), font = font_heading)
+    drawy.text((50, 100), today.strftime("%A"), font = font_heading)
+    draw.text((40, 180), cal, font = font_cal)
+    drawy.text((50, 420), "\n".join(textwrap.wrap(getQuote(), width=30)), font = font_quote)
     return image, imagey
 
 def horizontalImages():
