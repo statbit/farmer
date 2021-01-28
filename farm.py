@@ -4,13 +4,14 @@ import sys
 import requests
 import textwrap
 from farm_settings import Settings
+from weather import Weather
 
 sys.path.append("lib")
 
 from datetime import *
 from calendar import TextCalendar
 from PIL import Image, ImageDraw, ImageFont
-from waveshare import epd7in5bc
+# from waveshare import epd7in5bc
 import json
 
 font_body = ImageFont.truetype("OpenSans-Regular.ttf", 26)
@@ -19,47 +20,31 @@ font_heading = ImageFont.truetype("OpenSans-Regular.ttf", 56)
 font_big = ImageFont.truetype("OpenSans-Regular.ttf", 128)
 font_cal = ImageFont.truetype("DroidSansMono.ttf", 26)
 
-epd = epd7in5bc.EPD()
-
-def getWeather():
-    qurl = "https://api.openweathermap.org/data/2.5/onecall?exclude=minutely,hourly&lat={}&lon={}&appid={}&unit=imperial".format(Settings.lat, Settings.lon, Settings.api_key)
-    resp = requests.get(url=qurl)
-    data = resp.json()
-    return data
+# epd = epd7in5bc.EPD()
 
 def load():
     with open('out.json') as f:
         data = json.load(f)
         return data
 
-def writeData(data, draw, x):
-    day = datetime.fromtimestamp(data['dt'])
-    draw.text((x,400), day.strftime("%a"), font=font_body) 
-
-    tof = lambda k: int((1.8 * (k - 273)) + 32)
-
-    min = tof(data['temp']['min'])
-    max = tof(data['temp']['max'])
+def writeData(weather, img, x, idx):
+    day, min, max, con = weather.getForecast(idx)
     
-    draw.text((x,450), str(min) + "°", font=font_body) 
-    draw.text((x,500), str(max) + "°", font=font_body) 
-    draw.text((x,550), str(data['weather'][0]['main']), font=font_body) 
+    draw = ImageDraw.Draw(img)
 
-def makeImage(data, draw):
-    width=380
-    height=600
+    draw.text((x,400), day, font=font_body) 
+    draw.text((x,430), min, font=font_body) 
+    draw.text((x,460), max, font=font_body) 
+    draw.text((x,490), con, font=font_body) 
 
-    d1data = data['daily'][0]
-    d2data = data['daily'][1]
-    d3data = data['daily'][2]
+    icon = Image.open("./img/" + weather.getIcon(idx) + ".png").convert("1")
+    img.paste(icon, (x, 520))
 
-    # image = Image.new("1", size=(width,height), color=255)
-    # draw = ImageDraw.Draw(image)
 
-    writeData(d1data, draw, 50)
-    writeData(d2data, draw, 150)
-    writeData(d3data, draw, 250)
-
+def makeImage(weather, img):
+    writeData(weather, img, 50, 0)
+    writeData(weather, img, 150, 1)
+    writeData(weather, img, 250, 2)
 
 def getQuote():
     qurl = "https://ron-swanson-quotes.herokuapp.com/v2/quotes"
@@ -69,13 +54,15 @@ def getQuote():
     return quote
 
 def verticalImages():
-    height=epd.width
-    width=epd.height
+    # height=epd.width
+    # width=epd.height
+
+    height=600
+    width=380
 
     today = date.today()
     image = Image.new("1", size = (width, height), color = 255)
     imagey = Image.new("1", size = (width, height), color = 255)
-
 
     cal = TextCalendar().formatmonth(today.year, today.month)
 
@@ -87,7 +74,9 @@ def verticalImages():
     draw.text((40, 160), cal, font = font_cal)
     # drawy.text((50, 400), "\n".join(textwrap.wrap(getQuote(), width=30)), font = font_quote)
 
-    makeImage(getWeather(), drawy)
+    weather = Weather(Settings.lat, Settings.lon, Settings.api_key)
+    weather.getWeather()
+    makeImage(weather, imagey)
 
     return image, imagey
 
@@ -121,10 +110,10 @@ def getImages():
 
 image, imagey = getImages()
 
-# image.save("test.jpg")
-# imagey.save("testy.jpg")
+image.save("bw.jpg")
+imagey.save("by.jpg")
 
-epd.init()
-epd.Clear()
-epd.display(epd.getbuffer(image), epd.getbuffer(imagey))
+# epd.init()
+# epd.Clear()
+# epd.display(epd.getbuffer(image), epd.getbuffer(imagey))
 
