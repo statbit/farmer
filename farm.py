@@ -54,11 +54,11 @@ def getQuote():
     return quote
 
 def verticalImages():
-    # height=epd.width
-    # width=epd.height
+    height=epd.width
+    width=epd.height
 
-    height=600
-    width=380
+    # height=600
+    # width=380
 
     today = date.today()
     image = Image.new("1", size = (width, height), color = 255)
