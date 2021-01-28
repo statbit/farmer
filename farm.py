@@ -11,7 +11,7 @@ sys.path.append("lib")
 from datetime import *
 from calendar import TextCalendar
 from PIL import Image, ImageDraw, ImageFont
-# from waveshare import epd7in5bc
+from waveshare import epd7in5bc
 import json
 
 font_body = ImageFont.truetype("OpenSans-Regular.ttf", 26)
@@ -20,7 +20,7 @@ font_heading = ImageFont.truetype("OpenSans-Regular.ttf", 56)
 font_big = ImageFont.truetype("OpenSans-Regular.ttf", 128)
 font_cal = ImageFont.truetype("DroidSansMono.ttf", 26)
 
-# epd = epd7in5bc.EPD()
+epd = epd7in5bc.EPD()
 
 def load():
     with open('out.json') as f:
@@ -110,10 +110,10 @@ def getImages():
 
 image, imagey = getImages()
 
-image.save("bw.jpg")
-imagey.save("by.jpg")
+# image.save("bw.jpg")
+# imagey.save("by.jpg")
 
-# epd.init()
-# epd.Clear()
-# epd.display(epd.getbuffer(image), epd.getbuffer(imagey))
+epd.init()
+epd.Clear()
+epd.display(epd.getbuffer(image), epd.getbuffer(imagey))
 
