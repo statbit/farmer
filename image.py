@@ -45,15 +45,34 @@ class LegoImage:
     def makeCalImg(self):
         today = date.today()
         style = """<style>
-            .thisday { color: white; background-color: black; font-weight: bold}
+            #day { position: relative; color: white; }
+            tr { padding-top: 2px; }
+            .thisday::before {
+              position: absolute;
+              top: -.4em;
+              left: -.5em;
+              z-index: -1;
+              content: " ";
+              display: block;
+              background-color: black;
+              width: 1.5em;
+              height: 1.5em;
+              border-radius: 1em;
+            }
             th { padding: .1em}
             td { padding: 1px}
             th.month {display: none}
             table { font-family: courier; font-size: 14pt }
             </style>"""
 
+
         htmlcal = HTMLCalendar().formatmonth(today.year, today.month, withyear=False)
-        styledcal = "<html>" + style + htmlcal.replace( str(today.day), "<span class=thisday>" + str(today.day) + "</span>") + "</html>"
+        html = htmlcal.replace( 
+            ">%s<" % str(today.day), 
+            "><div id=day><span class=thisday>%s</span></div><" % str(today.day) 
+        )
+
+        styledcal = "<html>%s %s</html>" % (style, html)
         imgkit.from_string(styledcal, 'cal.jpg')
 
     def verticalImages(self):
