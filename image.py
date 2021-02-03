@@ -45,16 +45,17 @@ class LegoImage:
     def makeCalImg(self):
         today = date.today()
         style = """<style>
-            #day { position: relative; color: white; }
+            #day { position: relative; color: black; }
             tr { padding-top: 2px; }
             .thisday::before {
               position: absolute;
               top: -.4em;
-              left: -.5em;
+              left: -.6em;
               z-index: -1;
               content: " ";
               display: block;
-              background-color: black;
+              background-color: white;
+              border: 2px solid black;
               width: 1.5em;
               height: 1.5em;
               border-radius: 1em;
@@ -73,6 +74,8 @@ class LegoImage:
         )
 
         styledcal = "<html>%s %s</html>" % (style, html)
+        with open("cal.html", "w") as f:
+            f.write(styledcal)
         imgkit.from_string(styledcal, 'cal.jpg')
 
     def verticalImages(self):
