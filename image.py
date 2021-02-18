@@ -44,13 +44,21 @@ class LegoImage:
 
     def makeCalImg(self):
         today = date.today()
+
+        if today.day < 10:
+            top = "-.4em"
+            left = "-.6em"
+        else:
+            top = "-.3em"
+            left = "-.25em"
+
         style = """<style>
             #day { position: relative; color: black; }
             tr { padding-top: 2px; }
             .thisday::before {
               position: absolute;
-              top: -.4em;
-              left: -.6em;
+              top: TOP;
+              left: LEFT;
               z-index: -1;
               content: " ";
               display: block;
@@ -66,7 +74,7 @@ class LegoImage:
             table { font-family: courier; font-size: 14pt }
             </style>"""
 
-
+        style = style.replace("TOP", top).replace("LEFT", left)
         htmlcal = HTMLCalendar().formatmonth(today.year, today.month, withyear=False)
         html = htmlcal.replace( 
             ">%s<" % str(today.day), 
