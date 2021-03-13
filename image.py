@@ -5,6 +5,8 @@ import imgkit
 from datetime import *
 from calendar import TextCalendar, HTMLCalendar
 from PIL import Image, ImageDraw, ImageFont
+from farm_settings import Settings
+
 
 class LegoImage:
     orientation = ""
@@ -18,24 +20,24 @@ class LegoImage:
     font_big = ImageFont.truetype("OpenSans-Regular.ttf", 128)
     font_cal = ImageFont.truetype("DroidSansMono.ttf", 26)
 
-    def __init__(self, *, orientation = "vert", width=380, height=600, weather):
+    def __init__(self, *, orientation="vert", width=380, height=600, weather):
         self.orientation = orientation
         self.width = width
         self.height = height
         self.weather = weather
+        self.weather = Weather(Settings.lat, Settings.lon, Settings.api_key)
 
     def writeData(self, img, x, idx):
         day, min, max, con = self.weather.getForecast(idx)
 
         draw = ImageDraw.Draw(img)
-        draw.text((x,400), day, font=self.font_body) 
-        draw.text((x,430), min, font=self.font_body) 
-        draw.text((x,460), max, font=self.font_body) 
-        draw.text((x,490), con, font=self.font_body) 
+        draw.text((x, 400), day, font=self.font_body)
+        draw.text((x, 430), min, font=self.font_body)
+        draw.text((x, 460), max, font=self.font_body)
+        draw.text((x, 490), con, font=self.font_body)
 
         icon = Image.open("./img/" + self.weather.getIcon(idx) + ".png").convert("1")
         img.paste(icon, (x, 520))
-
 
     def makeImage(self, img):
         self.writeData(img, 50, 0)
@@ -76,28 +78,28 @@ class LegoImage:
 
         style = style.replace("TOP", top).replace("LEFT", left)
         htmlcal = HTMLCalendar().formatmonth(today.year, today.month, withyear=False)
-        html = htmlcal.replace( 
-            ">%s<" % str(today.day), 
-            "><div id=day><span class=thisday>%s</span></div><" % str(today.day) 
+        html = htmlcal.replace(
+            ">%s<" % str(today.day),
+            "><div id=day><span class=thisday>%s</span></div><" % str(today.day),
         )
 
         styledcal = "<html>%s %s</html>" % (style, html)
         with open("cal.html", "w") as f:
             f.write(styledcal)
-        imgkit.from_string(styledcal, 'cal.jpg')
+        imgkit.from_string(styledcal, "cal.jpg")
 
     def verticalImages(self):
         today = date.today()
-        image = Image.new("1", size = (self.width, self.height), color = 255)
-        imagey = Image.new("1", size = (self.width, self.height), color = 255)
+        image = Image.new("1", size=(self.width, self.height), color=255)
+        imagey = Image.new("1", size=(self.width, self.height), color=255)
 
         cal = TextCalendar().formatmonth(today.year, today.month)
 
         draw = ImageDraw.Draw(image)
         drawy = ImageDraw.Draw(imagey)
 
-        draw.text((50, 10), today.strftime("%b %d %Y"), font = self.font_heading)
-        drawy.text((50, 80), today.strftime("%A"), font = self.font_heading)
+        draw.text((50, 10), today.strftime("%b %d %Y"), font=self.font_heading)
+        drawy.text((50, 80), today.strftime("%A"), font=self.font_heading)
         self.makeCalImg()
 
         calimg = Image.open("./cal.jpg").convert("1")
@@ -112,24 +114,27 @@ class LegoImage:
     def horizontalImages(self):
 
         today = date.today()
-        image = Image.new("1", size = (self.width, self.height), color = 255)
-        imagey = Image.new("1", size = (self.width, self.height), color = 255)
+        image = Image.new("1", size=(self.width, self.height), color=255)
+        imagey = Image.new("1", size=(self.width, self.height), color=255)
 
         cal = TextCalendar().formatmonth(today.year, today.month)
 
         draw = ImageDraw.Draw(image)
         drawy = ImageDraw.Draw(imagey)
 
-        draw.text((50, 10), today.strftime("%b"), font = self.font_heading)
-        draw.text((30, 70), today.strftime("%d"), font = self.font_big)
-        draw.text((50, 220), today.strftime("%Y"), font = self.font_heading)
-        drawy.text((210, 30), cal, font = self.font_cal)
-        draw.text((210, 220), today.strftime("%A"), font = self.font_heading)
-        drawy.text((50, 300), "\n".join(textwrap.wrap(getQuote())), font = self.font_quote)
+        draw.text((50, 10), today.strftime("%b"), font=self.font_heading)
+        draw.text((30, 70), today.strftime("%d"), font=self.font_big)
+        draw.text((50, 220), today.strftime("%Y"), font=self.font_heading)
+        drawy.text((210, 30), cal, font=self.font_cal)
+        draw.text((210, 220), today.strftime("%A"), font=self.font_heading)
+        drawy.text(
+            (50, 300), "\n".join(textwrap.wrap(getQuote())), font=self.font_quote
+        )
         return image, imagey
 
     def getImages(self):
-        if(self.orientation == "vert"):
-            return self.verticalImages() 
+        self.weather.getWeather()
+        if self.orientation == "vert":
+            return self.verticalImages()
         else:
             return self.horizontalImages()
