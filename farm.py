@@ -9,12 +9,14 @@ from screen import Paper
 
 import json
 
-paper = Paper(mode='epaper', orientation='vert')
+paper = Paper(mode="epaper", orientation="vert")
+
 
 def load():
-    with open('out.json') as f:
+    with open("out.json") as f:
         data = json.load(f)
         return data
+
 
 def getQuote():
     qurl = "https://ron-swanson-quotes.herokuapp.com/v2/quotes"
@@ -23,8 +25,12 @@ def getQuote():
     quote = data[0]
     return quote
 
-weather = Weather(Settings.lat, Settings.lon, Settings.api_key)
-weather.getWeather()
-legoImage = LegoImage(orientation="vert", weather=weather, width = paper.width(), height = paper.height())
+
+legoImage = LegoImage(
+    orientation="vert",
+    weather=weather,
+    width=paper.width(),
+    height=paper.height())
+
 image, imagey = legoImage.getImages()
-paper.drawImages(image,imagey)
+paper.drawImages(image, imagey)
