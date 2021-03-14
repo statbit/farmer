@@ -5,12 +5,14 @@ import requests
 from farm_settings import Settings
 from weather import Weather
 from image import LegoImage
-from screen import Paper
+from bing_image import BingImage
+import random
+
+# from screen import Paper
 
 import json
 
 paper = Paper(mode="epaper", orientation="vert")
-
 
 def load():
     with open("out.json") as f:
@@ -25,12 +27,19 @@ def getQuote():
     quote = data[0]
     return quote
 
+def imageBuilder(type):
+    type = random.randint(0,5)
 
-legoImage = LegoImage(
-    orientation="vert",
-    weather=weather,
-    width=paper.width(),
-    height=paper.height())
+    if(type == 5):
+        return BingImage()
+    else:
+        return LegoImage(
+            orientation="vert",
+            weather=weather,
+            width=paper.width(),
+            height=paper.height())
 
-image, imagey = legoImage.getImages()
+image, imagey = imageBuilder('img').getImages()
+image.save("bw.jpg")
+imagey.save("y.jpg")
 paper.drawImages(image, imagey)
