@@ -8,7 +8,7 @@ from image import LegoImage
 from bing_image import BingImage
 import random
 
-# from screen import Paper
+from screen import Paper
 
 import json
 
@@ -29,6 +29,7 @@ def getQuote():
 
 def imageBuilder(type):
     type = random.randint(0,5)
+    type = 5
 
     if(type == 5):
         return BingImage()

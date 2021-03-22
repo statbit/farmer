@@ -12,7 +12,7 @@ class BingImage:
     width=0
     height=0
 
-    font_heading = ImageFont.truetype("OpenSans-Regular.ttf", 56)
+    font_heading = ImageFont.truetype("OpenSans-Regular.ttf", 126)
 
     headers = None
     bgImage = None
@@ -52,7 +52,7 @@ class BingImage:
         today = date.today()
         self.dayImage = Image.new("1", size=(self.width, self.height), color=255)
         drawy = ImageDraw.Draw(self.dayImage)
-        drawy.text((50, self.height/2 - 25), today.strftime("%A"), font=self.font_heading)
+        drawy.text((90, self.height/2 - 55), today.strftime("%d"), font=self.font_heading)
 
 
     def getImages(self):
