@@ -133,7 +133,7 @@ class LegoImage:
         draw = ImageDraw.Draw(image)
         drawy = ImageDraw.Draw(imagey)
 
-        draw.text((50, 10), today.strftime("%b"), font = self.font_heading)
+        draw.text((50, 15), today.strftime("%b"), font = self.font_heading)
         draw.text((30, 70), today.strftime("%d"), font = self.font_big)
         draw.text((50, 220), today.strftime("%Y"), font = self.font_heading)
         drawy.text((210, 30), cal, font = self.font_cal)
