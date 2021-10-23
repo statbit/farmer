@@ -1,6 +1,8 @@
 import sys
 import textwrap
 import imgkit
+import os
+import io
 
 from datetime import *
 from calendar import TextCalendar, HTMLCalendar
@@ -38,9 +40,20 @@ class LegoImage:
 
 
     def makeImage(self, img):
-        self.writeData(img, 50, 0)
-        self.writeData(img, 150, 1)
-        self.writeData(img, 250, 2)
+
+        file = datetime.now().strftime("special/%m_%d.jpg")
+        filemsg = datetime.now().strftime("special/%m_%d.txt")
+
+        if(os.path.isfile(file)):
+            specialImage = Image.open(file).convert("1")
+            specialText = "".join(io.open(filemsg).readlines()).strip()
+            img.paste(specialImage, (90, 400))
+            draw = ImageDraw.Draw(img)
+            draw.text((40,620), specialText, font=self.font_body) 
+        else:
+            self.writeData(img, 50, 0)
+            self.writeData(img, 150, 1)
+            self.writeData(img, 250, 2)
 
     def makeCalImg(self):
         today = date.today()
@@ -91,7 +104,7 @@ class LegoImage:
         image = Image.new("1", size = (self.width, self.height), color = 255)
         imagey = Image.new("1", size = (self.width, self.height), color = 255)
 
-        cal = TextCalendar().formatmonth(today.year, today.month)
+        # cal = TextCalendar().formatmonth(today.year, today.month)
 
         draw = ImageDraw.Draw(image)
         drawy = ImageDraw.Draw(imagey)
