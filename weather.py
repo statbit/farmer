@@ -20,6 +20,10 @@ class Weather:
         self.data = data
         return data
 
+    def temp(self):
+        tof = lambda k: int((1.8 * (k - 273)) + 32)
+        return tof(self.data['current']['temp'])
+
     def getIcon(self, day):
         dayData = self.data['daily'][day]
         return dayData['weather'][0]['icon']
