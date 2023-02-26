@@ -2,7 +2,6 @@
 
 import requests
 import shutil
-import imgkit
 from inky.auto import auto
 from PIL import Image, ImageDraw, ImageFont
 
@@ -42,7 +41,7 @@ d = auto()
 with Image.open('img.png') as im:
     resImg = im.resize(d.resolution)
     draw = ImageDraw.Draw(resImg)
-    draw.text((40,40), weather.temp(), font=self.font_body)
+    draw.text((40,40), str(weather.temp()), font=font_body)
     d.set_image(resImg, saturation=1.0)
     d.show()
 
