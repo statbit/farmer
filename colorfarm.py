@@ -2,8 +2,9 @@
 
 import requests
 import shutil
-from ink.auto import auto
-from PIL import Image
+import imgkit
+from inky.auto import auto
+from PIL import Image, ImageDraw, ImageFont
 
 from farm_settings import Settings
 from weather import Weather
@@ -35,9 +36,13 @@ weather = Weather(Settings.lat, Settings.lon, Settings.api_key)
 weather.getWeather()
 getIOD()
 
+font_body = ImageFont.truetype("OpenSans-Regular.ttf", 26)
+
 d = auto()
 with Image.open('img.png') as im:
     resImg = im.resize(d.resolution)
+    draw = ImageDraw.Draw(resImg)
+    draw.text((40,40), weather.temp(), font=self.font_body)
     d.set_image(resImg, saturation=1.0)
     d.show()
 
