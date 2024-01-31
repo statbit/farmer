@@ -1,0 +1,3 @@
+*/20 * * * * /home/pi/git/farmer/run.sh &
+0 */4 * * * /home/pi/git/farmer/update.sh &
+@reboot /home/pi/git/farmer/run.sh
