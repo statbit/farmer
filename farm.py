@@ -8,6 +8,7 @@ from chatgpt import ChatGPT
 
 import json
 from PIL import Image
+import random
 
 paper = Paper(mode='epaper', orientation='vert')
 
@@ -15,6 +16,12 @@ def load():
     with open('out.json') as f:
         data = json.load(f)
         return data
+
+def choose_random_line(file_path):
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+        random_line = random.choice(lines)
+        return random_line.strip()
 
 # def getQuote():
 #     qurl = "https://ron-swanson-quotes.herokuapp.com/v2/quotes"
@@ -24,7 +31,11 @@ def load():
 #     return quote
 
 gpt = ChatGPT()
-history = gpt.ask("Give me 2 historical events that happened today. One fact per line. Make the lines less than 20 characters each. Include nothing but the two lines of information.")
+
+file_path = './prompts.txt'
+random_line = choose_random_line(file_path)
+
+history = gpt.ask(random_line)
 weather = Weather(Settings.lat, Settings.lon, Settings.api_key)
 weather.getWeather()
 legoImage = LegoImage(orientation="vert", weather=weather, history=history, width = paper.width(), height = paper.height())
