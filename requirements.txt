@@ -2,3 +2,4 @@ Pillow==8.1.0
 imgkit
 RPi.GPIO==0.7.0
 requests
+openai
