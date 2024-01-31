@@ -117,7 +117,7 @@ class LegoImage:
 
         calimg = Image.open("./cal.jpg").convert("1")
         image.paste(calimg, (40, 160))
-        draw.text((50, 320), self.history, font = self.font_quote)
+        draw.text((50, 330), self.history, font = self.font_quote)
 
         # draw.text((40, 160), cal, font = self.font_cal)
         # drawy.text((50, 400), "\n".join(textwrap.wrap(getQuote(), width=30)), font = self.font_quote)
