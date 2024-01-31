@@ -9,7 +9,7 @@ from chatgpt import ChatGPT
 import json
 from PIL import Image
 
-# paper = Paper(mode='epaper', orientation='vert')
+paper = Paper(mode='epaper', orientation='vert')
 
 def load():
     with open('out.json') as f:
@@ -28,6 +28,7 @@ history = gpt.ask("Give me 2 historical events that happened today. One fact per
 weather = Weather(Settings.lat, Settings.lon, Settings.api_key)
 weather.getWeather()
 legoImage = LegoImage(orientation="vert", weather=weather, history=history, width = paper.width(), height = paper.height())
+image, imagey = legoImage.getImages()
 
 # legoImage = LegoImage(orientation="vert", weather=weather, history=history, width = 448, height = 600)
 # image, imagey = legoImage.getImages()
