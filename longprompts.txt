@@ -1,0 +1,6 @@
+write me a fortune cookie
+write me a short paragraph no more than 30 words about nature in the style of dr. seuss
+write me 3 facts about snakes, each on a separate line, each fact no more than 10 words
+explain a random fact about science for a 6th grader in no more than 30 words.
+give some facts about a random historical person in no more than 40 words. use language a 6th grader would understand.
+give me a random fact about star wars. explain in no more than 40 words.

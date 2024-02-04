@@ -23,6 +23,9 @@ def choose_random_line(file_path):
         random_line = random.choice(lines)
         return random_line.strip()
 
+def flip_coin():
+    return random.choice(['Heads', 'Tails'])
+
 # def getQuote():
 #     qurl = "https://ron-swanson-quotes.herokuapp.com/v2/quotes"
 #     resp = requests.get(url=qurl)
@@ -32,16 +35,18 @@ def choose_random_line(file_path):
 
 gpt = ChatGPT()
 
-file_path = './prompts.txt'
+file_path =  './prompts.txt' if flip_coin == 'Heads' else './longprompts.txt'
 random_line = choose_random_line(file_path)
+longai = file_path == './longprompts.txt'
 
 history = gpt.ask(random_line)
 weather = Weather(Settings.lat, Settings.lon, Settings.api_key)
 weather.getWeather()
-legoImage = LegoImage(orientation="vert", weather=weather, history=history, width = paper.width(), height = paper.height())
+
+legoImage = LegoImage(orientation="vert", weather=weather, history=history, width = paper.width(), height = paper.height(), longai=longai)
 image, imagey = legoImage.getImages()
 
-# legoImage = LegoImage(orientation="vert", weather=weather, history=history, width = 448, height = 600)
+# legoImage = LegoImage(orientation="vert", weather=weather, history=history, width = 448, height = 600, longai=longai)
 # image, imagey = legoImage.getImages()
 # image.save("output.jpg")  
 # imagey.save("outputy.jpg")  
