@@ -35,7 +35,7 @@ def flip_coin():
 
 gpt = ChatGPT()
 
-file_path =  './prompts.txt' if flip_coin == 'Heads' else './longprompts.txt'
+file_path =  './prompts.txt' if flip_coin() == 'Heads' else './longprompts.txt'
 random_line = choose_random_line(file_path)
 longai = file_path == './longprompts.txt'
 
