@@ -6,3 +6,5 @@ if it is morning, write me a short rhyme about morning, less than 100 characters
 find me one random interesting fact about dogs. write a sentence about it, no longer than 80 characters. make that the only output. use words a sixth grader would understand.
 find me a word of the day. write a sentence about it, no longer than 80 characters. make that the only output. use words a sixth grader would understand.
 Give me 2 historical events that happened today. One fact per line. Make the lines less than 20 characters each. Include nothing but the two lines of information.
+write me a random question and answer it.
+write me a random quesiont about science and answer it.
