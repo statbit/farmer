@@ -1,10 +1,10 @@
-find one historical event that happened on $(this_date). Use that fact as inspiration and write a haiku about it. The title of the haiku should be the fact itself followed by a newline and the haiku itself. Output only those two things, no other text.
+find one historical event that happened on $this_date. Use that fact as inspiration and write a haiku about it. The title of the haiku should be the fact itself followed by a newline and the haiku itself. Output only those two things, no other text.
 find me one random interesting fact about science. write a sentence about it, no longer than 80 characters. make that the only output. use words a sixth grader would understand.
-find me two important people whose birthday is $(this_date). write a quick fact about each following their name. each person on a separate line. no other output.
+find me two important people whose birthday is $this_date. write a quick fact about each following their name. each person on a separate line. no other output.
 write me a rhyme about the current month. make it shorter than 100 characters. funny if possible. that should be the only output.
 if it is morning, write me a short rhyme about morning, less than 100 characters. if it is afternoon, write me a short rhyme about the afternoon, less than 100 characters. make that the only output. 
 find me one random interesting fact about dogs. write a sentence about it, no longer than 80 characters. make that the only output. use words a sixth grader would understand.
 find me a word of the day. write a sentence about it, no longer than 80 characters. make that the only output. use words a sixth grader would understand.
-Give me 2 historical events that happened $(this_date). One fact per line. Make the lines less than 20 characters each. Include nothing but the two lines of information.
+Give me 2 historical events that happened $this_date. One fact per line. Make the lines less than 20 characters each. Include nothing but the two lines of information.
 write me a random question and answer it.
 write me a random quesiont about science and answer it.
