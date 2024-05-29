@@ -26,7 +26,7 @@ def choose_random_line(file_path):
         return random_line.strip()
 
 def flip_coin():
-    return random.choice(['Heads', 'Tails'])
+    return random.choice(['Heads', 'Tails', 'Heads', 'Heads' ])
 
 # def getQuote():
 #     qurl = "https://ron-swanson-quotes.herokuapp.com/v2/quotes"
