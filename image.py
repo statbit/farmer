@@ -16,8 +16,8 @@ class LegoImage:
     history = None
     longai = False
 
-    font_body = ImageFont.truetype("OpenSans-Regular.ttf", 26)
-    font_quote = ImageFont.truetype("OpenSans-Regular.ttf", 16)
+    font_body = ImageFont.truetype("OpenSans-Regular.ttf", 20)
+    font_quote = ImageFont.truetype("OpenSans-Regular.ttf", 12)
     font_heading = ImageFont.truetype("OpenSans-Regular.ttf", 56)
     font_big = ImageFont.truetype("OpenSans-Regular.ttf", 128)
     font_cal = ImageFont.truetype("DroidSansMono.ttf", 26)
@@ -34,9 +34,9 @@ class LegoImage:
         day, min, max, con = self.weather.getForecast(idx)
 
         draw = ImageDraw.Draw(img)
-        draw.text((x,400), day, font=self.font_body) 
-        draw.text((x,430), min, font=self.font_body) 
-        draw.text((x,460), max, font=self.font_body) 
+        draw.text((x,430), day, font=self.font_body) 
+        draw.text((x,450), min, font=self.font_body) 
+        draw.text((x,470), max, font=self.font_body) 
         draw.text((x,490), con, font=self.font_body) 
 
         icon = Image.open("./img/" + self.weather.getIcon(idx) + ".png").convert("1")
@@ -119,11 +119,11 @@ class LegoImage:
 
         if(self.longai):
             print("longai")
-            draw.text((40, 160), "\n".join(textwrap.wrap(self.history, width=30)), font = self.font_quote)
+            draw.text((40, 160), "\n".join(textwrap.wrap(self.history, width=50)), font = self.font_quote)
         else:
             calimg = Image.open("./cal.jpg").convert("1")
             image.paste(calimg, (40, 160))
-            draw.text((50, 330), "\n".join(textwrap.wrap(self.history, width=30)), font = self.font_quote)
+            draw.text((50, 330), "\n".join(textwrap.wrap(self.history, width=50)), font = self.font_quote)
 
         # draw.text((40, 160), cal, font = self.font_cal)
         # drawy.text((50, 400), "\n".join(textwrap.wrap(getQuote(), width=40, replaceWhitespace=false)), font = self.font_quote)
