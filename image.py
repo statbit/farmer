@@ -17,7 +17,7 @@ class LegoImage:
     longai = False
 
     font_body = ImageFont.truetype("OpenSans-Regular.ttf", 20)
-    font_quote = ImageFont.truetype("OpenSans-Regular.ttf", 12)
+    font_quote = ImageFont.truetype("OpenSans-Regular.ttf", 14)
     font_heading = ImageFont.truetype("OpenSans-Regular.ttf", 56)
     font_big = ImageFont.truetype("OpenSans-Regular.ttf", 128)
     font_cal = ImageFont.truetype("DroidSansMono.ttf", 26)
