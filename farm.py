@@ -7,8 +7,10 @@ from screen import Paper
 from chatgpt import ChatGPT
 
 import json
+from string import Template
 from PIL import Image
 import random
+import datetime
 
 paper = Paper(mode='epaper', orientation='vert')
 
@@ -38,8 +40,10 @@ gpt = ChatGPT()
 file_path =  './prompts.txt' if flip_coin() == 'Heads' else './longprompts.txt'
 random_line = choose_random_line(file_path)
 longai = file_path == './longprompts.txt'
+prompt_template = Template(random_line)
+this_day =datetime.today().strftime("%B %d")
+history = gpt.ask(prompt_template.substitute(this_day=this_day))
 
-history = gpt.ask(random_line)
 weather = Weather(Settings.lat, Settings.lon, Settings.api_key)
 weather.getWeather()
 

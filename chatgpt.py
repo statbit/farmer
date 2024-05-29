@@ -16,7 +16,7 @@ class ChatGPT:
                     "content": question
                 }
             ],
-            model="gpt-4-1106-preview"
+            model="gpt-4o"
         )
         return response.choices[0].message.content
 
