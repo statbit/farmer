@@ -10,7 +10,7 @@ import json
 from string import Template
 from PIL import Image
 import random
-import datetime
+from datetime import datetime
 
 paper = Paper(mode='epaper', orientation='vert')
 
