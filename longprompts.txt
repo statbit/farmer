@@ -4,22 +4,25 @@ write me a short paragraph no more than 30 words about flying in the style of dr
 write me 3 facts about snakes, each on a separate line, each fact no more than 10 words
 describe 3 facts about snakes, each on a separate line, each fact no more than 10 words
 explain 3 facts about snakes, each on a separate line, each fact no more than 10 words
-explain a random fact about science for a 6th grader in no more than 30 words.
-explain a random fact about space for a 6th grader in no more than 30 words.
-explain a random fact about nature for a 6th grader in no more than 30 words.
-explain a random fact about social studies for a 6th grader in no more than 30 words.
-give some facts about a random historical person in no more than 40 words. use language a 6th grader would understand. 
-give a fact about a random famous person in no more than 40 words. use language a 6th grader would understand. 
-write a paragraph about a random historical from the 1920s in no more than 40 words. use language a 6th grader would understand. 
-write a paragraph about a random historical from the 1800s in no more than 40 words. use language a 6th grader would understand. 
-write a paragraph about a random historical from the 1700s in no more than 40 words. use language a 6th grader would understand. 
-write a paragraph about a random historical from the 1600s in no more than 40 words. use language a 6th grader would understand. 
-write a paragraph about a random historical from the 1930s in no more than 40 words. use language a 6th grader would understand. 
-write a paragraph about a random historical from the 1940s in no more than 40 words. use language a 6th grader would understand. 
-write a paragraph about a random historical from the 1950s in no more than 40 words. use language a 6th grader would understand. 
-write a paragraph about a random historical from the 1960s in no more than 40 words. use language a 6th grader would understand. 
-write a paragraph about a random historical from the 1970s in no more than 40 words. use language a 6th grader would understand. 
+explain a random fact about science for a 7th grader in no more than 30 words.
+explain a random fact about space for a 7th grader in no more than 30 words.
+explain a random fact about nature for a 7th grader in no more than 30 words.
+explain a random fact about social studies for a 7th grader in no more than 30 words.
+give some facts about a random historical person in no more than 40 words. use language a 7th grader would understand. 
+give a fact about a random famous person in no more than 40 words. use language a 7th grader would understand. 
+write a paragraph about a random historical from the 1920s in no more than 40 words. use language a 7th grader would understand. 
+write a paragraph about a random historical from the 1800s in no more than 40 words. use language a 7th grader would understand. 
+write a paragraph about a random historical from the 1700s in no more than 40 words. use language a 7th grader would understand. 
+write a paragraph about a random historical from the 1600s in no more than 40 words. use language a 7th grader would understand. 
+write a paragraph about a random historical from the 1930s in no more than 40 words. use language a 7th grader would understand. 
+write a paragraph about a random historical from the 1940s in no more than 40 words. use language a 7th grader would understand. 
+write a paragraph about a random historical from the 1950s in no more than 40 words. use language a 7th grader would understand. 
+write a paragraph about a random historical from the 1960s in no more than 40 words. use language a 7th grader would understand. 
+write a paragraph about a random historical from the 1970s in no more than 40 words. use language a 7th grader would understand. 
 give me a random fact about star wars. explain in no more than 40 words.
 give me a random fact about wookies from star wars. explain in no more than 40 words.
 give me a random fact about droids from star wars. explain in no more than 40 words.
 give me a random fact about jedi from star wars. explain in no more than 40 words.
+pick and random color ane explain its significance to an ancient culture in no more than 40 words.
+Give me a random fact about Australia in no more than 40 words.
+Write me some interesting fact about rational numbers in no more than 40 words.

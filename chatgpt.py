@@ -16,7 +16,8 @@ class ChatGPT:
                     "content": question
                 }
             ],
-            model="gpt-4o"
+            model="gpt-4o",
+            temperature=0.5
         )
         return response.choices[0].message.content
 
