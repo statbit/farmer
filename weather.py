@@ -14,7 +14,7 @@ class Weather:
        self.apikey = apikey
 
     def getWeather(self):
-        qurl = "https://api.openweathermap.org/data/2.5/onecall?exclude=minutely,hourly&lat={}&lon={}&appid={}&unit=imperial".format(self.lat, self.lon, self.apikey)
+        qurl = "https://api.openweathermap.org/data/3.0/onecall?exclude=minutely,hourly&lat={}&lon={}&appid={}&unit=imperial".format(self.lat, self.lon, self.apikey)
         resp = requests.get(url=qurl)
         data = resp.json()
         self.data = data
